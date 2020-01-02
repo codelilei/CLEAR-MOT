@@ -23,6 +23,8 @@ float CalcIou(const ObjRect &src, const ObjRect &dst) {
     int y1 = MAX(src.y1, dst.y1);
     int x2 = MIN(src.x2, dst.x2);
     int y2 = MIN(src.y2, dst.y2);
+    if (x1 >= x2 || y1 >= y2)
+        return 0.0;
 
     float area_src = (src.x2 - src.x1) * (src.y2 - src.y1);
     float area_dst = (dst.x2 - dst.x1) * (dst.y2 - dst.y1);
